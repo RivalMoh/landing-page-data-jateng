@@ -28,7 +28,7 @@ const {
 // Theme mapping — all white-based, no dark backgrounds
 const themeMap = {
   orange: {
-    sectionBg: "bg-white",
+    sectionBg: "bg-orange-light",
     textPrimary: "text-text-primary",
     textBody: "text-text-body",
     button:
@@ -38,7 +38,7 @@ const themeMap = {
     statBorder: "border-orange-border/50",
   },
   blue: {
-    sectionBg: "bg-surface",
+    sectionBg: "bg-blue-light",
     textPrimary: "text-text-primary",
     textBody: "text-text-body",
     button:
@@ -48,7 +48,7 @@ const themeMap = {
     statBorder: "border-blue-border/50",
   },
   green: {
-    sectionBg: "bg-white",
+    sectionBg: "bg-green-light",
     textPrimary: "text-text-primary",
     textBody: "text-text-body",
     button:
@@ -130,13 +130,13 @@ const activeTheme = themeMap[theme];
 
     <!-- Image Column -->
     <div
-      class={`reveal-up w-[100%] rounded-3xl overflow-hidden flex items-center justify-center p-6 lg:p-8`}
+      class="reveal-up w-full flex items-center justify-center"
       style="transition-delay: 200ms;"
     >
       <Image
         src={image}
         alt={`Visual ${title}`}
-        class="w-[100%] h-[100%] object-contain drop-shadow-xl transition-transform duration-500 hover:scale-105"
+        class="w-full h-auto max-h-[75vh] object-contain drop-shadow-xl transition-transform duration-500 hover:scale-105"
       />
     </div>
   </div>
