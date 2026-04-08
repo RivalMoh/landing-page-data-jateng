@@ -8,7 +8,7 @@ interface Props {
   buttonText: string;
   buttonUrl: string;
   theme: "orange" | "blue" | "green";
-  isReversed?: boolean; // Controls the Z-pattern (Image left vs Image right)
+  isReversed?: boolean;
   image: any;
   stats?: { value: string; label: string }[];
 }
@@ -25,44 +25,37 @@ const {
   stats = [],
 } = Astro.props;
 
-// Rigorous Theme Mapping based on your Figma design tokens
+// Theme mapping — all white-based, no dark backgrounds
 const themeMap = {
   orange: {
     sectionBg: "bg-white",
     textPrimary: "text-text-primary",
     textBody: "text-text-body",
     button:
-      "bg-orange-primary text-white hover:bg-orange-dark shadow-orange-primary/25",
-    imageBg: "bg-orange-light",
-    imageBorder: "border-orange-border",
-    accentText: "text-orange-dark",
-    statBg: "color-white",
-    statBorder: "border-orange-100",
+      "bg-orange-primary text-white hover:bg-orange-dark shadow-orange-primary/20",
+    accentText: "text-orange-primary",
+    statBg: "bg-white",
+    statBorder: "border-orange-border/50",
   },
   blue: {
     sectionBg: "bg-surface",
     textPrimary: "text-text-primary",
     textBody: "text-text-body",
     button:
-      "bg-blue-primary text-white hover:opacity-90 shadow-blue-primary/25",
-    imageBg: "bg-blue-light",
-    imageBorder: "border-blue-border",
+      "bg-blue-primary text-white hover:opacity-90 shadow-blue-primary/20",
     accentText: "text-blue-primary",
-    statBg: "color-white",
-    statBorder: "border-blue-100",
+    statBg: "bg-white",
+    statBorder: "border-blue-border/50",
   },
   green: {
-    // Specifically handling your dark mode section for Satu Peta
-    sectionBg: "bg-green-dark-bg",
-    textPrimary: "text-white",
-    textBody: "text-text-muted",
+    sectionBg: "bg-white",
+    textPrimary: "text-text-primary",
+    textBody: "text-text-body",
     button:
-      "bg-green-primary text-white hover:opacity-90 shadow-green-primary/25",
-    imageBg: "bg-green-card-bg",
-    imageBorder: "border-white/10",
+      "bg-green-primary text-white hover:bg-green-dark shadow-green-primary/20",
     accentText: "text-green-primary",
-    statBg: "color-white",
-    statBorder: "border-green-100",
+    statBg: "bg-white",
+    statBorder: "border-green-border/50",
   },
 };
 
@@ -71,30 +64,31 @@ const activeTheme = themeMap[theme];
 
 <section
   id={id}
-  class={`relative h-screen flex items-center pt-20 snap-start ${activeTheme.sectionBg} transition-colors duration-500`}
+  class={`relative min-h-screen flex items-center py-24 snap-start ${activeTheme.sectionBg} transition-colors duration-500`}
 >
   <div
     class="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
   >
+    <!-- Text Column -->
     <div
       class={`reveal-up flex flex-col items-start gap-6 ${isReversed ? "lg:order-last" : ""}`}
     >
       <h2
-        class={`font-heading font-bold text-4xl lg:text-5xl ${activeTheme.textPrimary}`}
+        class={`font-heading font-bold text-4xl lg:text-5xl leading-tight ${activeTheme.textPrimary}`}
       >
         {title}
       </h2>
-      <p class={`text-lg leading-relaxed ${activeTheme.textBody}`}>
+      <p class={`text-lg leading-relaxed max-w-lg ${activeTheme.textBody}`}>
         {description}
       </p>
 
       {
         stats.length > 0 && (
-          <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-2 mb-2">
-            {/* We use .slice(0, 3) to strictly enforce the maximum of 3 cards */}
-            {stats.slice(0, 3).map((stat) => (
+          <div class="w-full grid grid-cols-3 gap-3 md:gap-4 mt-2">
+            {stats.slice(0, 3).map((stat, i) => (
               <div
-                class={`p-4 rounded-2xl border ${activeTheme.statBg} ${activeTheme.statBorder} transition-transform duration-300 hover:-translate-y-1`}
+                class={`p-4 rounded-2xl border ${activeTheme.statBg} ${activeTheme.statBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
+                style={`transition-delay: ${i * 100}ms;`}
               >
                 <div
                   class={`font-heading font-extrabold text-2xl lg:text-3xl ${activeTheme.accentText}`}
@@ -114,20 +108,35 @@ const activeTheme = themeMap[theme];
 
       <a
         href={buttonUrl}
-        class={`mt-4 px-8 py-3 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 ${activeTheme.button}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`mt-4 inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 ${activeTheme.button}`}
       >
         {buttonText}
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
       </a>
     </div>
 
+    <!-- Image Column -->
     <div
-      class={`reveal-up w-full h-full rounded-3xl overflow-hidden flex items-center justify-center py-12 lg:py-0`}
+      class={`reveal-up w-[100%] rounded-3xl overflow-hidden flex items-center justify-center p-6 lg:p-8`}
       style="transition-delay: 200ms;"
     >
       <Image
         src={image}
         alt={`Visual ${title}`}
-        class="w-[100%] h-[100%] object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
+        class="w-[100%] h-[100%] object-contain drop-shadow-xl transition-transform duration-500 hover:scale-105"
       />
     </div>
   </div>

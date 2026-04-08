@@ -1,53 +1,93 @@
 @import "tailwindcss";
 
+/* ── Local Font Faces ──────────────────────────────────── */
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ── Design Tokens ─────────────────────────────────────── */
 @theme {
-  /* Typography Variables (Assuming you use Inter and Plus Jakarta Sans) */
-  --font-sans: "Inter", sans-serif;
-  --font-heading: "Plus Jakarta Sans", sans-serif;
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Inter", sans-serif;
 
-  /* Accent Colors */
-  --color-orange-primary: #FF6B35;
-  --color-orange-dark: #C44D1A;
-  --color-orange-light: #FFF3EE;
-  --color-orange-border: #FECBB0;
+  /* Accent Colors — Orange */
+  --color-orange-primary: #ff6b35;
+  --color-orange-dark: #c44d1a;
+  --color-orange-light: #fff3ee;
+  --color-orange-border: #fecbb0;
 
-  --color-blue-primary: #3B82F6;
-  --color-blue-light: #EFF6FF;
-  --color-blue-border: #BFDBFE;
+  /* Accent Colors — Blue */
+  --color-blue-primary: #3b82f6;
+  --color-blue-light: #eff6ff;
+  --color-blue-border: #bfdbfe;
 
-  --color-green-primary: #10C98F;
-  --color-green-dark-bg: #1A1A2E;
-  --color-green-card-bg: #252438;
+  /* Accent Colors — Green (light theme) */
+  --color-green-primary: #10c98f;
+  --color-green-dark: #0a9b6e;
+  --color-green-light: #eefbf5;
+  --color-green-border: #a7f3d0;
 
   /* Typography Colors */
-  --color-text-primary: #1A1A2E;
-  --color-text-body: #6B6880;
-  --color-text-muted: #8B89A0;
+  --color-text-primary: #1a1a2e;
+  --color-text-body: #6b6880;
+  --color-text-muted: #8b89a0;
 
   /* Surfaces & Layout */
-  --color-surface: #FAFAF8;
-  --color-white: #FFFFFF;
-  --color-border-ui: #F0EFEC;
-  --color-footer-bg: #111122;
+  --color-surface: #fafaf8;
+  --color-white: #ffffff;
+  --color-border-ui: #f0efec;
+  --color-footer-bg: #f5f5f3;
 }
 
-/* initial state for elements bofore scroll into view */
-.reveal-up{
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* state when element is visible */
+/* ── Scroll Reveal ─────────────────────────────────────── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* The state triggered */
 .reveal-up.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Add this below your reveal-up classes in src/styles/global.css */
-
+/* ── Floating animation ────────────────────────────────── */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -59,7 +99,7 @@
   animation: float 6s ease-in-out infinite;
 }
 
-/* Smooth scrolling for top bar anchor links */
+/* ── Smooth scrolling ──────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }

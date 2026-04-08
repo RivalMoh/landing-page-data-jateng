@@ -3,32 +3,127 @@
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b border-border-ui bg-white/30 backdrop-blur-md"
+  class="sticky top-0 z-50 w-full border-b border-border-ui bg-white/80 backdrop-blur-xl"
 >
   <div
-    class="max-w-7xl mx-auto px-6 lg:px-8 h-15 flex items-center justify-between"
+    class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between"
   >
+    <!-- Logo -->
     <a href="#" class="flex items-center gap-3 group">
       <div
-        class="w-10 h-10 rounded-full color-white/20 flex items-center justify-center group-hover:bg-orange-primary transition-colors"
+        class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-gray-400"
       >
-        <div class="w-5 h-5 rounded-full bg-orange-primary"></div>
       </div>
       <span class="font-heading font-bold text-xl text-text-primary">
         Ekosistem Data Jateng
       </span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8 font-medium text-text-body">
-      <a href="#open-data" class="hover:text-orange-primary transition-colors"
-        >Open Data</a
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-10 font-medium text-text-body">
+      <a
+        href="#open-data"
+        class="group flex items-center gap-2 hover:text-orange-primary transition-colors duration-300"
       >
-      <a href="#satu-data" class="hover:text-blue-primary transition-colors"
-        >Satu Data</a
+        <span
+          class="w-5 h-5 rounded-full bg-gray-300 inline-block transition-colors duration-300 group-hover:bg-orange-primary"
+        ></span>
+        Open Data
+      </a>
+      <a
+        href="#satu-data"
+        class="group flex items-center gap-2 hover:text-blue-primary transition-colors duration-300"
       >
-      <a href="#satu-peta" class="hover:text-green-primary transition-colors"
-        >Satu Peta</a
+        <span
+          class="w-5 h-5 rounded-full bg-gray-300 inline-block transition-colors duration-300 group-hover:bg-blue-primary"
+        ></span>
+        Satu Data
+      </a>
+      <a
+        href="#satu-peta"
+        class="group flex items-center gap-2 hover:text-green-primary transition-colors duration-300"
       >
+        <span
+          class="w-5 h-5 rounded-full bg-gray-300 inline-block transition-colors duration-300 group-hover:bg-green-primary"
+        ></span>
+        Satu Peta
+      </a>
     </nav>
+
+    <!-- Mobile Hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 group"
+      aria-label="Toggle menu"
+    >
+      <span
+        class="block w-6 h-0.5 bg-text-primary transition-all duration-300 origin-center group-[.is-open]:rotate-45 group-[.is-open]:translate-y-2"
+      ></span>
+      <span
+        class="block w-6 h-0.5 bg-text-primary transition-all duration-300 group-[.is-open]:opacity-0"
+      ></span>
+      <span
+        class="block w-6 h-0.5 bg-text-primary transition-all duration-300 origin-center group-[.is-open]:-rotate-45 group-[.is-open]:-translate-y-2"
+      ></span>
+    </button>
   </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <nav
+    id="mobile-menu"
+    class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white border-t border-border-ui"
+  >
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
+      <a
+        href="#open-data"
+        class="mobile-nav-link group flex items-center gap-3 py-2 text-text-body hover:text-orange-primary transition-colors duration-300"
+      >
+        <span
+          class="w-5 h-5 rounded-full bg-gray-300 inline-block transition-colors duration-300 group-hover:bg-orange-primary"
+        ></span>
+        Open Data
+      </a>
+      <a
+        href="#satu-data"
+        class="mobile-nav-link group flex items-center gap-3 py-2 text-text-body hover:text-blue-primary transition-colors duration-300"
+      >
+        <span
+          class="w-5 h-5 rounded-full bg-gray-300 inline-block transition-colors duration-300 group-hover:bg-blue-primary"
+        ></span>
+        Satu Data
+      </a>
+      <a
+        href="#satu-peta"
+        class="mobile-nav-link group flex items-center gap-3 py-2 text-text-body hover:text-green-primary transition-colors duration-300"
+      >
+        <span
+          class="w-5 h-5 rounded-full bg-gray-300 inline-block transition-colors duration-300 group-hover:bg-green-primary"
+        ></span>
+        Satu Peta
+      </a>
+    </div>
+  </nav>
 </header>
+
+<script>
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn?.addEventListener("click", () => {
+    menuBtn.classList.toggle("is-open");
+    if (mobileMenu) {
+      const isOpen = menuBtn.classList.contains("is-open");
+      mobileMenu.style.maxHeight = isOpen
+        ? `${mobileMenu.scrollHeight}px`
+        : "0";
+    }
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuBtn?.classList.remove("is-open");
+      if (mobileMenu) mobileMenu.style.maxHeight = "0";
+    });
+  });
+</script>
