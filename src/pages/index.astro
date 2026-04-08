@@ -1,11 +1,56 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import TopBar from "../components/TopBar.astro";
+import Hero from "../components/Hero.astro";
+import GatewaySection from "../components/GatewaySection.astro";
+import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import openDataImg from "../assets/images/open-data.png";
+import satuDataImg from "../assets/images/satu-data.png";
+import satuPetaImg from "../assets/images/satu-peta.png";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Beranda">
+  <TopBar />
+  <main>
+    <Hero />
+
+    <GatewaySection
+      id="open-data"
+      title="Open Data Jateng"
+      description="Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean."
+      buttonText="Cari Data"
+      buttonUrl="https://data.jatengprov.go.id"
+      theme="orange"
+      image={openDataImg}
+      stats={[
+        { value: "1,450+", label: "Dataset Terbuka" },
+        { value: "48", label: "OPD Terhubung" },
+        { value: "1.2M", label: "Akses Publik" },
+      ]}
+    />
+
+    <GatewaySection
+      id="satu-data"
+      title="Satu Data Jateng"
+      description="Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean."
+      buttonText="Akses Data"
+      buttonUrl="https://satudata.jatengprov.go.id"
+      theme="blue"
+      isReversed={true}
+      image={satuDataImg}
+    />
+
+    <GatewaySection
+      id="satu-peta"
+      title="Satu Peta Jateng"
+      description="Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean."
+      buttonText="Lihat Peta"
+      buttonUrl="https://satupeta.jatengprov.go.id"
+      theme="green"
+      image={satuPetaImg}
+    />
+
+    <Footer />
+  </main>
 </Layout>

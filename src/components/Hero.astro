@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+import heroImage from "../assets/images/hero.png";
+import borobudurBg from "../assets/images/borobudur-bg.png";
+---
+
+<section
+  class="relative h-screen flex items-center pb-20 overflow-hidden bg-surface pt-20 snap-start"
+>
+  <Image
+    src={borobudurBg}
+    alt="Siluet Borobudur"
+    class="absolute bottom-0 left-0 w-full h-[60%] lg:h-[80%] object-cover object-bottom opacity-15 pointer-events-none z-0"
+  />
+
+  <div
+    class="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+  >
+    <div class="flex flex-col items-start gap-6">
+      <h1
+        class="reveal-up font-heading font-extrabold text-5xl lg:text-7xl text-text-primary leading-tight tracking-tight"
+      >
+        Ekosistem<br />Data Jateng
+      </h1>
+
+      <p
+        class="reveal-up text-lg lg:text-xl text-text-body leading-relaxed max-w-lg"
+        style="transition-delay: 150ms;"
+      >
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur
+        adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae
+        pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus
+        duis. Pretium tellus duis convallis tempus leo eu aenean.
+      </p>
+    </div>
+
+    <div
+      class="reveal-up w-full relative flex items-center justify-center pt-12 lg:pt-0"
+      style="transition-delay: 450ms;"
+    >
+      <Image
+        src={heroImage}
+        alt="Visual Ekosistem Data Jateng"
+        class="w-[100%] lg:w-[100%] h-auto max-h-[70vh] object-contain transition-transform duration-300 hover:scale-105"
+        style="filter: drop-shadow(0 15px 20px rgba(255, 107, 53, 0.2));"
+      />
+    </div>
+  </div>
+</section>
