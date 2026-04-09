@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TopBar from "../components/TopBar.astro";
+import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
+import TentangSection from "../components/TentangSection.astro";
 import GatewaySection from "../components/GatewaySection.astro";
 import Footer from "../components/Footer.astro";
 
@@ -11,14 +12,15 @@ import satuPetaImg from "../assets/images/satu-peta.png";
 ---
 
 <Layout title="Beranda">
-  <TopBar />
+  <Navbar />
   <main>
     <Hero />
+    <TentangSection />
 
     <GatewaySection
       id="open-data"
       title="Open Data Jateng"
-      description="Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean."
+      description="Portal data terbuka Provinsi Jawa Tengah yang menyediakan akses publik terhadap ribuan dataset dari berbagai sektor. Mendorong inovasi, riset, dan partisipasi masyarakat melalui keterbukaan informasi pemerintah daerah."
       buttonText="Cari Data"
       buttonUrl="https://data.jatengprov.go.id"
       theme="orange"
@@ -33,7 +35,7 @@ import satuPetaImg from "../assets/images/satu-peta.png";
     <GatewaySection
       id="satu-data"
       title="Satu Data Jateng"
-      description="Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean."
+      description="Platform interoperabilitas data antar Organisasi Perangkat Daerah se-Jawa Tengah. Menyatukan standar data, metadata, dan mekanisme berbagi data untuk mendukung perencanaan dan evaluasi pembangunan yang akurat dan terkoordinasi."
       buttonText="Akses Data"
       buttonUrl="https://satudata.jatengprov.go.id"
       theme="blue"
@@ -44,11 +46,16 @@ import satuPetaImg from "../assets/images/satu-peta.png";
     <GatewaySection
       id="satu-peta"
       title="Satu Peta Jateng"
-      description="Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean."
+      description="Portal geospasial terpadu yang menyajikan peta digital interaktif Provinsi Jawa Tengah. Menyediakan data spasial tematik untuk perencanaan tata ruang, infrastruktur, lingkungan, dan analisis potensi wilayah."
       buttonText="Lihat Peta"
       buttonUrl="https://satupeta.jatengprov.go.id"
       theme="green"
       image={satuPetaImg}
+      stats={[
+        { value: "31", label: "Produsen Data" },
+        { value: "40", label: "Pengguna" },
+        { value: "70", label: "Dataset Terpublikasi" },
+      ]}
     />
 
     <Footer />
