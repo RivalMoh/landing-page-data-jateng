@@ -1,6 +1,4 @@
-# Ekosistem Data Jateng
-
-![Ekosistem Data Jateng Preview](./src/assets/images/hero.png)
+# Landing Page Ekosistem Data Jateng
 
 Ekosistem Data Jateng is a high-performance, statically generated landing page that serves as the centralized digital gateway for the Central Java Provincial Government's data services. 
 
