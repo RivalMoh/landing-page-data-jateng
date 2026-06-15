@@ -43,6 +43,14 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --font-heading: "Plus Jakarta Sans", "Inter", sans-serif;
 
+  /* Accent Colors - Mustard */
+  --color-mustard-primary: #FFD449;
+  --color-mustard-dark: #E5E059;
+  --color-mustard-light: #FFF2C9;
+  --color-mustard-border: #FFDE70;
+  --color-mustard-glow: rgba(255, 198, 10, 0.15);
+
+
   /* Accent Colors — Orange */
   --color-orange-primary: #ff6b35;
   --color-orange-dark: #e55a28;
@@ -215,7 +223,7 @@ section[id] {
 
 /* ── Gradient text utility ─────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #ff6b35, #3b82f6);
+  background: #ffcc22;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
